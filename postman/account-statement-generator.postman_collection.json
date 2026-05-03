@@ -1,0 +1,195 @@
+{
+  "info": {
+    "name": "Account Statement Generator",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Manual generation, download, metadata, and audit revision checks for the account statement generator."
+  },
+  "item": [
+    {
+      "name": "Trigger generation - month all accounts",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/statements/generation/{{statementMonth}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "statements",
+            "generation",
+            "{{statementMonth}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Trigger generation - one account",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/statements/generation/{{statementMonth}}?accountId={{accountId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "statements",
+            "generation",
+            "{{statementMonth}}"
+          ],
+          "query": [
+            {
+              "key": "accountId",
+              "value": "{{accountId}}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Download latest statement",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/statements/{{statementMonth}}?accountId={{accountId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "statements",
+            "{{statementMonth}}"
+          ],
+          "query": [
+            {
+              "key": "accountId",
+              "value": "{{accountId}}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Download exact revision",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/statements/{{statementMonth}}?accountId={{accountId}}&revision={{revision}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "statements",
+            "{{statementMonth}}"
+          ],
+          "query": [
+            {
+              "key": "accountId",
+              "value": "{{accountId}}"
+            },
+            {
+              "key": "revision",
+              "value": "{{revision}}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Download with If-None-Match",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "If-None-Match",
+            "value": "\"{{etag}}\""
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/statements/{{statementMonth}}?accountId={{accountId}}&revision={{revision}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "statements",
+            "{{statementMonth}}"
+          ],
+          "query": [
+            {
+              "key": "accountId",
+              "value": "{{accountId}}"
+            },
+            {
+              "key": "revision",
+              "value": "{{revision}}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get statement metadata",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/statements/{{statementMonth}}/metadata?accountId={{accountId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "statements",
+            "{{statementMonth}}",
+            "metadata"
+          ],
+          "query": [
+            {
+              "key": "accountId",
+              "value": "{{accountId}}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get revision history",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/statements/{{statementMonth}}/revisions?accountId={{accountId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "statements",
+            "{{statementMonth}}",
+            "revisions"
+          ],
+          "query": [
+            {
+              "key": "accountId",
+              "value": "{{accountId}}"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
